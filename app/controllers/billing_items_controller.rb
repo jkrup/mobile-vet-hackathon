@@ -12,6 +12,11 @@ class BillingItemsController < ApplicationController
   end
 
   def create
-    @billing_item = BillingItem.create(params[:billing_item])
+    respond_to  do |format|
+      format.js do  
+        @billing_item = BillingItem.find_or_create_by_item_id_and_visit_id(item_id:params[:billing_item][:item_id], visit_id: params[:billing_item][:visit_id])
+        #redirect_to Visit.find(params[:billing_item][:visit_id])
+      end
+    end  
   end
 end

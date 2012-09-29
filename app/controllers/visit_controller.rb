@@ -1,2 +1,0 @@
-class VisitController < ApplicationController
-end

@@ -32,11 +32,8 @@ class Visit < ActiveRecord::Base
   end
 
   def visit_total
-    sum = 0
-    @billing_items.each do |billing_item|
-      sum += billing_item.item.price
-    end
-    sum
+    sum = (billing_items || []).reduce(0.0){|sum, billing_item| sum+= billing_item.item.price; sum}
+    #sum = (billing_items || []).map(&:billing_item).map(&:price).(:+) || 0
   end
 
 end

@@ -4,3 +4,9 @@ MobileVet Billable Items for Visit
     %li
       = billing_item.item.name
       = number_to_currency billing_item.item.price
+Total for this visit: 
+= number_to_currency @visit.visit_total
+= form_for @visit do |f|
+  = hidden_field_tag :next_step, :finish_checkout
+  = f.submit_tag "Confirm total charges."
+

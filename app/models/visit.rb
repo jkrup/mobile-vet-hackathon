@@ -33,8 +33,8 @@ class Visit < ActiveRecord::Base
 
   def visit_total
     sum = 0
-    billing_items.each do |billing_item|
-      sum += billing_item.price
+    @billing_items.each do |billing_item|
+      sum += billing_item.item.price
     end
     sum
   end

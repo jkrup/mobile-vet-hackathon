@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: billing_items
+#
+#  id         :integer          not null, primary key
+#  visit_id   :integer
+#  item_id    :integer
+#  pet_id     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  visit_id: 1
+  item_id: 1
+  pet_id: 1
+
+two:
+  visit_id: 1
+  item_id: 1
+  pet_id: 1

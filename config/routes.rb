@@ -4,4 +4,7 @@ MobileVet::Application.routes.draw do
   root to: "users#index"
   match "appointments/show", to: 'appointments#show'
   match "appointments/schedule", to: 'appointments#schedule'
+
+  resources :visits
+  resources :billing_items
 end

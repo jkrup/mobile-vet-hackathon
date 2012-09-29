@@ -28,4 +28,5 @@ gem 'jquery-rails'
 
 gem 'devise'
 gem 'cancan'
+gem 'workflow'
 

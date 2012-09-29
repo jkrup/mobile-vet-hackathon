@@ -6,6 +6,7 @@ group :development do
   gem 'sqlite3'
   gem 'annotate'
   gem 'pry'
+  gem 'thin'
 end
 
 

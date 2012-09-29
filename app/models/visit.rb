@@ -19,6 +19,15 @@ class Visit < ActiveRecord::Base
       event :finish_checkout, :transitions_to => :complete
     end
     
-    state :finish_checkout
+    state :complete
+  end
+
+  def do_checkin visit_attr
+    is_home=true
+    checkin!
+    save!
+  end
+  def next_step (visit_attr = {})
+    self.send "do_#{visit_attr[:next_step]}", visit_attr
   end
 end

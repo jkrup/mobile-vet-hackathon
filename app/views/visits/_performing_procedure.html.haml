@@ -1,0 +1,6 @@
+%ul
+  - @items.each do |item|
+    = form_for BillingItem.new do |f|
+      %li
+        = f.hidden_field :item_id, :value => item.id
+        = f.submit item.name

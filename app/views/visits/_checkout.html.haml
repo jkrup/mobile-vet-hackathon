@@ -1,0 +1,6 @@
+MobileVet Billable Items for Visit
+%ul
+  - @billing_items.each do |billing_item|
+    %li
+      = billing_item.item.name
+      = number_to_currency billing_item.item.price

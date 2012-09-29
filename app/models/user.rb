@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  has_many :client_visits, class_name: 'Visit', foreign_key: :client_id
+  has_many :provider_visits, class_name: 'Visit', foreign_key: :provider_id
+
 end

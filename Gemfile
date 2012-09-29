@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
+
 group :development do
   gem 'sqlite3'
   gem 'annotate'
   gem 'pry'
+  gem 'thin'
 end
 
 

@@ -24,3 +24,6 @@ end
 gem 'haml-rails'
 gem 'jquery-rails'
 
+gem 'devise'
+gem 'cancan'
+

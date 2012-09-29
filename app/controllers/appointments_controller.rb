@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
     #end
   end
   def schedule
+    @vets = User.all.select { |user| %w(vet technician).include?(user.role) }
 
   end
 end

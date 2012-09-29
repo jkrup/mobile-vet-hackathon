@@ -1,0 +1,12 @@
+=params
+%form{action: "schedule", method: "post"}
+  %table
+    %tbody
+      - 24.times do |hour|
+        %tr
+          - 7.times do |day|
+            %td
+              %input{type: "checkbox", name: "#{day}[]#{hour}[]"}
+  %textarea{name: "type"}
+    a
+  %input{type: "submit"}

@@ -44,4 +44,13 @@ class Visit < ActiveRecord::Base
   def next_step (visit_attr = {})
     self.send "do_#{visit_attr[:next_step]}", visit_attr
   end
+
+  def visit_total
+    sum = 0
+    @billing_items.each do |billing_item|
+      sum += billing_item.item.price
+    end
+    sum
+  end
+
 end

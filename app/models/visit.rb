@@ -21,10 +21,14 @@ class Visit < ActiveRecord::Base
 
   workflow do
     state :waiting_for_client do
-      event :checkin, :transitions_to => :performing_procedure
+      event :checkin, :transitions_to => :assessment
       event :bill_client_no_show, :transitions_to => :complete
     end
-
+    
+    state :assessment do 
+      event :finish_assessment, :transitions_to => :performing_procedure
+    end
+    
     state :performing_procedure do 
       event :finish_procedure, :transitions_to => :checkout
     end
@@ -34,6 +38,14 @@ class Visit < ActiveRecord::Base
     end
     
     state :complete
+  end
+
+  def do_finish_assessment visit_attr
+    finish_assessment!
+  end
+
+  def do_finish_procedure visit_attr
+    finish_procedure!
   end
 
   def do_checkin visit_attr
@@ -46,8 +58,7 @@ class Visit < ActiveRecord::Base
   end
 
   def visit_total
-    sum = (billing_items || []).reduce(0.0){|sum, billing_item| sum+= billing_item.item.price; sum}
-    #sum = (billing_items || []).map(&:billing_item).map(&:price).(:+) || 0
+    sum = (billing_items || []).reduce(0.0){|sum, billing_item| sum += billing_item.item.price; sum}
   end
 
 end

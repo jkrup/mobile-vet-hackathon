@@ -10,3 +10,8 @@
   - @billing_items.each do |billing_item|
     %br
     = billing_item.item.name
+
+
+= form_for visit do |f|
+  = hidden_field_tag :next_step, :finish_procedure
+  = f.submit "Yes"

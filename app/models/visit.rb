@@ -19,6 +19,9 @@ class Visit < ActiveRecord::Base
   belongs_to :provider, class_name: 'User', foreign_key: :provider_id
   has_many :billing_items
 
+  def provider_type
+    provider.role
+  end
   workflow do
     state :waiting_for_client do
       event :checkin, :transitions_to => :assessment

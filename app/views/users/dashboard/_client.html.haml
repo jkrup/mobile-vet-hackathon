@@ -1,0 +1,11 @@
+%h2 Today's appointments
+Appointments go here
+%ul
+  - @visits.each do |visit|
+    %li  
+      Time: TODO
+      Pet: TODO
+      Requested: 
+      = visit.provider_type
+
+= link_to "Schedule appointment", requests_show_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930013120) do
+ActiveRecord::Schema.define(:version => 20120930031108) do
 
   create_table "billing_items", :force => true do |t|
     t.integer  "visit_id"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20120930013120) do
     t.integer  "client_id"
     t.integer  "provider_id"
     t.string   "workflow_state"
+    t.time     "start_time"
+    t.string   "visit_type"
   end
 
 end

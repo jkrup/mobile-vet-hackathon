@@ -14,9 +14,9 @@
 
 class Visit < ActiveRecord::Base
   include Workflow
-  attr_accessible :appointment_id, :is_home
+  attr_accessible :appointment_id, :is_home, :start_time, :visit_type, :provider_id, :client_id
   belongs_to :client, class_name: 'User', foreign_key: :client_id
-  belongs_to :provider, class_name: 'User', foreign_key: :provider_id
+  belongs_to :provider, class_name: 'User', foreign_key: :provider_id # the vet
   has_many :billing_items
 
   workflow do

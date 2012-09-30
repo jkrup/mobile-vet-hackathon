@@ -1,6 +1,6 @@
 %p VET
 %h2 Requests
-- current_user.requests.each do |request|
+- current_user.outstanding_requests.each do |request|
   %ul
     %li
       Client:
@@ -15,10 +15,24 @@
       Accept or decline:
       %ul
         %li
-          %a{href: "/requests/accept"}
+          %a{href: "/requests/accept?request_id=#{request.id}"}
             Accept
         %li
           %a{href: "/requests/decline"}
             Decline
   = request.inspect
-
+%h2 Visits
+- current_user.provider_visits.each do |visit|
+  %ul
+    %li
+      = link_to("Begin visit", visit)
+    %li
+      Client:
+      %strong
+        = visit.client.first_name
+        = visit.client.last_name
+    %li
+      Address:
+      %strong
+        = visit.client.address
+  = visit.inspect

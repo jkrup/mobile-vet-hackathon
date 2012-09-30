@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   def is_technician?
     role == "technician"
   end
+
+  def outstanding_requests
+    Request.where(assigned_vet_id: 4)
+  end
 end

@@ -1,4 +1,6 @@
 MobileVet::Application.routes.draw do
+  get "user/show"
+
   devise_for :users
 
   root to: "users#index"

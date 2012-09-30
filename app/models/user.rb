@@ -29,5 +29,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :client_visits, class_name: 'Visit', foreign_key: :client_id
   has_many :provider_visits, class_name: 'Visit', foreign_key: :provider_id
+  has_many :requests
 
 end

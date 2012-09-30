@@ -47,6 +47,6 @@ class User < ActiveRecord::Base
   end
 
   def outstanding_requests
-    Request.where(assigned_vet_id: 4)
+    raise "Outstanding Requests go here"
   end
 end

@@ -22,6 +22,7 @@ class Request < ActiveRecord::Base
   def get_start_time
     JSON.parse(self.requested_slots_serialized)["day_starts"][0] #TODO: first day
   end
+
   def get_end_time
     JSON.parse(self.requested_slots_serialized)["day_ends"][0] #TODO: first day
   end

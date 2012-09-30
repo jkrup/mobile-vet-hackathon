@@ -16,24 +16,20 @@ class RequestsController < ApplicationController
     request_start = day_starts[0].to_f
     request_end = day_ends[0].to_f
 
-    @vets = User.all.select { |user| %w(vet technician).include?(user.role) }
+    @vets = User.all.select { |user| user.is_provider? }
 
-    vet =
-      @vets.find do |vet|
-        if handsmash(vet, request_start, request_end)
-          vet
-        end
-      end
-    raise "No available vets" unless vet
+    vet = @vets.select{ |vet| handsmash(vet, request_start, request_end) }.first
 
-    request = Request.new(
-      assigned_vet_id: vet.id,
-      requested_slots_serialized: {day_starts: day_starts, day_ends: day_ends}.to_json,
-      round_count: 0,
-      visit_type: "a" # TODO
-    )
-    request.user = current_user
-    raise "couldn't save user :(" unless request.save
+    if vet.present?
+      appointment_request = current_user.requests.create(
+        assigned_vet_id: vet.id,
+        requested_slots_serialized: {day_starts: day_starts, day_ends: day_ends}.to_json,
+        round_count: 0,
+        visit_type: "a" # TODO
+      )
+    end
+
+    redirect_to :root
   end
 
   def accept

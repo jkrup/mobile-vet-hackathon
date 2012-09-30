@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
 
   has_many :pets, foreign_key: "client_id"
 
-  has_many :requests
+  has_many :requests, foreign_key: :assigned_vet_id
+  has_many :vet_requests, class_name: 'Request'
 
   ROLES = %W[vet client technician]
   validates_presence_of  :role
@@ -63,7 +64,7 @@ class User < ActiveRecord::Base
   # Client methods
   # =================
   def requests_for_vet
-    return (requests || []) if is_client?
+    return (vet_requests || []) if is_client?
     []
   end
 
@@ -80,8 +81,14 @@ class User < ActiveRecord::Base
     []
   end
 
+
   def upcoming_visits
     return (visits_to_client || []) if is_provider?
     []
   end
+
+  def self.providers
+    User.all.select { |user| %w(vet technician).include?(user.role) }
+  end
+
 end

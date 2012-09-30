@@ -1,13 +1,17 @@
-%ul
-  %li
-    = link_to("Begin visit", visit)
-  %li
-    Client:
-    %strong
-      = visit.client.first_name
-      = visit.client.last_name
-  %li
-    Address:
-    %strong
-      = visit.client.address
-= visit.inspect
+-if current_user.is_client?
+  Dr #{visit.provider.last_name} will be visiting you soon!!
+
+- else
+  %ul
+    %li
+      = link_to("Begin visit", visit)
+    %li
+      Client:
+      %strong
+        = visit.client.first_name
+        = visit.client.last_name
+    %li
+      Address:
+      %strong
+        = visit.client.address
+  = visit.inspect

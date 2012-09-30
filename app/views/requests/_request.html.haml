@@ -15,10 +15,6 @@
     %li
       Accept or decline:
       %ul
-        %li
-          %a{href: "/requests/accept?request_id=#{request.id}"}
-            Accept
-        %li
-          %a{href: "/requests/decline"}
-            Decline
+        %li=link_to "Accept", requests_accept_path(request_id: request.id), class: 'btn'
+        %li=link_to "Decline", requests_decline_path(request_id: request.id), class: 'btn'
   = request.inspect

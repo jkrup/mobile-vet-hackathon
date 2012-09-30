@@ -1,18 +1,20 @@
 MobileVet::Application.routes.draw do
   get "users/show"
 
+
   devise_for :users
 
   resources :users, :visits, :billing_items, :pets, :payments
 
   root to: "users#show"
 
-  resources :requests
   get "requests/accept"
+  get "requests/decline"
+  resources :requests
 
 end
 #== Route Map
-# Generated on 30 Sep 2012 02:21
+# Generated on 30 Sep 2012 04:43
 #
 #         new_user_session GET    /users/sign_in(.:format)          devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)          devise/sessions#create
@@ -27,6 +29,13 @@ end
 #   edit_user_registration GET    /users/edit(.:format)             devise/registrations#edit
 #                          PUT    /users(.:format)                  devise/registrations#update
 #                          DELETE /users(.:format)                  devise/registrations#destroy
+#                    users GET    /users(.:format)                  users#index
+#                          POST   /users(.:format)                  users#create
+#                 new_user GET    /users/new(.:format)              users#new
+#                edit_user GET    /users/:id/edit(.:format)         users#edit
+#                     user GET    /users/:id(.:format)              users#show
+#                          PUT    /users/:id(.:format)              users#update
+#                          DELETE /users/:id(.:format)              users#destroy
 #                   visits GET    /visits(.:format)                 visits#index
 #                          POST   /visits(.:format)                 visits#create
 #                new_visit GET    /visits/new(.:format)             visits#new
@@ -64,3 +73,4 @@ end
 #                          PUT    /requests/:id(.:format)           requests#update
 #                          DELETE /requests/:id(.:format)           requests#destroy
 #          requests_accept GET    /requests/accept(.:format)        requests#accept
+#         requests_decline GET    /requests/decline(.:format)       requests#decline

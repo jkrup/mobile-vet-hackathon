@@ -1,0 +1,12 @@
+%h2 Enter credit card info
+= form_tag :controller => 'payments', :action => 'create', :method => 'put' do 
+  = label_tag :card_number
+  = text_field_tag :card_number
+  = label_tag :card_code, "CCV Code"
+  = text_field_tag :card_code
+  = label_tag :card_month
+  = text_field_tag :card_month
+  = label_tag :card_year
+  = text_field_tag :card_year
+  = submit_tag "Save Card info"
+

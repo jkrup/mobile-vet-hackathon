@@ -16,7 +16,10 @@ class PetsController < ApplicationController
       @pet = Pet.create(params[:pet])
       @pet.client_id = current_user.id 
       @pet.save
+      redirect_to new_pet_path, notice: "#{@pet.name} registered"
+    else
+      redirect_to "/"
     end
-    redirect_to pets_path
   end
+  
 end

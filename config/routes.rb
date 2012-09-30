@@ -9,5 +9,5 @@ MobileVet::Application.routes.draw do
 
   match "appointments/show", to: 'appointments#show'
   match "appointments/schedule", to: 'appointments#schedule'
-
+  
 end

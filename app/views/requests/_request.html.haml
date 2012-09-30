@@ -7,5 +7,7 @@
     #{request.client.first_name} #{request.client.last_name}
     %small #{request.client.address}
 
-  =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success'
-  =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger'
+  .request-address-data.hide{ data: { address: request.client.address.parameterize } }
+
+  =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success accept_link', data: { address: request.client.address.parameterize }
+  =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger decline_link', data: { address: request.client.address.parameterize }

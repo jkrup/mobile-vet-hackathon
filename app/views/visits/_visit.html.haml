@@ -6,4 +6,6 @@
     #{visit.client.first_name} #{visit.client.last_name}
     %small #{visit.client.address}
 
+  .visit-address-data.hide{ data: { address: visit.client.address.parameterize } }
+
   = link_to "Begin Appointment", visit, class: 'btn btn-info'

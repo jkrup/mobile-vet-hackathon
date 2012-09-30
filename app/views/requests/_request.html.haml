@@ -15,9 +15,10 @@
           %span #{request.client.pets.first.name}
           %span #{request.client.first_name} #{request.client.last_name}
           %span #{request.client.address}
+          .request-address-data.hide{ data: { address: request.client.address.parameterize } }
           %br/
           %span
-            =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success'
+            =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success accept_link', data: { address: request.client.address.parameterize }
           %span
-            =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger'
+            =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger decline_link', data: { address: request.client.address.parameterize }
           -#%i.icon-chevron-right.icon.apt-icon-right

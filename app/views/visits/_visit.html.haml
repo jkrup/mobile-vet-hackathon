@@ -21,3 +21,4 @@
           %span #{visit.client.address}
           %span
             = link_to "Begin Appointment", visit, class: 'btn btn-info'
+  .visit-address-data.hide{ data: { address: visit.client.address.parameterize } }

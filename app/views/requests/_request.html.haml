@@ -12,9 +12,10 @@
       Address:
       %strong
         = request.client.address
+        .request-address-data{ data: { address: request.client.address.parameterize } }
     %li
       Accept or decline:
       %ul
-        %li=link_to "Accept", requests_accept_path(request_id: request.id), remote: :true
-        %li=link_to "Decline", requests_decline_path(request_id: request.id), remote: :true
+        %li=link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: "accept_link", data: { address: request.client.address.parameterize }
+        %li=link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: "decline_link", data: { address: request.client.address.parameterize }
   = request.inspect

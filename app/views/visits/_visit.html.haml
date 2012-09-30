@@ -14,4 +14,5 @@
       Address:
       %strong
         = visit.client.address
+      .visit-address-data{ data: { address: visit.client.address.parameterize } }
   = visit.inspect

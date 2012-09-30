@@ -4,6 +4,7 @@
     %title MobileVet
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyC58kv27Frx7dqAnKpHu6QIW-M2f7tOwLY&sensor=true"
     = csrf_meta_tags
   %body
     - if current_user.nil?

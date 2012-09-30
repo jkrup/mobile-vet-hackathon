@@ -18,6 +18,8 @@
     $('#appt-requests').html("There are no requests at this time.")
   - else
     $('#appt-requests').html("#{ escape_javascript(render @requests) }")
+    - @requests.each do |request|
+      if(window.on_map.indexOf("#{request.client.address}") < 0) { addToMapLater("#{request.client.address}"); window.on_map.push("#{request.client.address}"); }
 
   - if @visits.blank?
     $('#confirmed-visits').html("You have no scheduled visits.")

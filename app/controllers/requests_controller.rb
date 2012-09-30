@@ -1,13 +1,14 @@
 class RequestsController < ApplicationController
 
-  def show
+  def new
+    @request = Request.new
     #respond_to do |format|
       #format.html
     #end
   end
 
   # This Schedules / Creates a request
-  def schedule
+  def create
     # get start and end window of first day
     day_starts = params["day_starts"].collect { |string_num| string_num.to_f }
     day_ends = params["day_ends"].collect { |string_num| string_num.to_f }
@@ -29,7 +30,7 @@ class RequestsController < ApplicationController
       assigned_vet_id: vet.id,
       requested_slots_serialized: {day_starts: day_starts, day_ends: day_ends}.to_json,
       round_count: 0,
-      visit_type: "a" # TODO0
+      visit_type: "a" # TODO
     )
     request.user = current_user
     raise "couldn't save user :(" unless request.save

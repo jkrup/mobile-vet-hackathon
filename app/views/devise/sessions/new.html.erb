@@ -1,5 +1,3 @@
-<h2>Sign in</h2>
-
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <div class="login">
         <h1>Sign in to Mobile<span class="vet">Vet</span></h1>
@@ -16,18 +14,18 @@
             </div>
           </div>
 
-          <%#<div class="control-group">%>
-            <%#<div class="controls">%>
+          <div class="control-group">
+            <div class="controls">
               <%#<label class="checkbox">%>
                 <%#<input type="checkbox"> Remember me%>
               <%#</label>%>
-              <%#<button type="submit" class="btn btn-primary" id="sign-in-button">Sign in!</button>%>
-            <%#</div>%>
-          <%#</div>%>
+              <button type="submit" class="btn btn-primary" id="sign-in-button">Sign in!</button>
+            </div>
+          </div>
         </form>
 
         <h4>New to Mobile<span class="vet">Vet</span>?</h4>
-        <button type="submit" class="btn btn-large" id="register-button"><img src="/assets/catdog-70.png" class="img-rounded"><br />Register your pet</button>
+        <button type="submit" onclick="document.location='/users/sign_up'; return false;" class="btn btn-large" id="register-button"><img src="/assets/catdog-70.png" class="img-rounded"><br />Register your pet</button>
       </div>
 <% end %>
 

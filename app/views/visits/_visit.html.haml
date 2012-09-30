@@ -12,10 +12,12 @@
 
 - else ## THIS IS THE VET
   %h3
-    %p
-      #{visit.client.first_name} #{visit.client.last_name}
-    %p
-      #{visit.client.pets.first.name}
-    %small #{visit.client.address}
-
-  = link_to "Begin Appointment", visit, class: 'btn btn-info'
+    .well.well-small.apt-list
+      %ul
+        %li
+          %span.vet 12:00pm
+          %span #{visit.client.pets.first.name}
+          %span #{visit.client.first_name} #{visit.client.last_name}
+          %span #{visit.client.address}
+          %span
+            = link_to "Begin Appointment", visit, class: 'btn btn-info'

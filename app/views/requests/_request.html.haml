@@ -1,11 +1,23 @@
 -if current_user.is_client?
-  %h2 A vet will be with you shortly
+  %h4 Appointment Scheduled!
+  %h2.vet You're All Set!
+  %h2
+    We'll contact you soon to confirm your appointment for #{ current_user.pets.first.name }.
+  %img.apt-success-img{:src => "/assets/dog-success.png"}/
 
 -else
   %h2 New Appointment Request
-  %h3
-    #{request.client.first_name} #{request.client.last_name}
-    %small #{request.client.address}
-
-  =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success'
-  =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger'
+  .well.well-small.apt-list
+    %ul
+      %li
+        .align-center
+          %span.vet 12:00pm
+          %span #{request.client.pets.first.name}
+          %span #{request.client.first_name} #{request.client.last_name}
+          %span #{request.client.address}
+          %br/
+          %span
+            =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success'
+          %span
+            =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger'
+          -#%i.icon-chevron-right.icon.apt-icon-right

@@ -1,9 +1,12 @@
-#procedures_list
-  = render @items, visit: visit
+.well.well-small.apt-list
+  #procedures_list
+    = render @items, visit: visit
+.well.well-small.apt-list
+  #billing_item_list
+    = render @billing_items
 
-#billing_item_list
-  = render @billing_items
-
-= form_for visit do |f|
-  = hidden_field_tag :next_step, :finish_procedure
-  = f.submit "Finish Treatments"
+.control-group
+  .controls.align-center.margintop
+    = form_for visit do |f|
+      = hidden_field_tag :next_step, :finish_procedure
+      = f.submit "Finish Treatments", class: "btn btn-large btn-primary"

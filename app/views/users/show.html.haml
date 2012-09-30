@@ -3,7 +3,5 @@
 %p
   current user is
   = current_user.inspect
-- if current_user.is_vet?
-  = render "/users/dashboard/vet"
-- if current_user.is_client?
-  = render "/users/dashboard/client"
+
+= render "/users/dashboard/#{current_user.role}"

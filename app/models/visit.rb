@@ -10,6 +10,8 @@
 #  client_id      :integer
 #  provider_id    :integer
 #  workflow_state :string(255)
+#  start_time     :time
+#  visit_type     :string(255)
 #
 
 class Visit < ActiveRecord::Base

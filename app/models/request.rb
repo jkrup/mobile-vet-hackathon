@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: appointments
+# Table name: requests
 #
 #  id                         :integer          not null, primary key
 #  requested_slots_serialized :text

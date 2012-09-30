@@ -18,7 +18,7 @@
           %a{href: "/requests/accept?request_id=#{request.id}"}
             Accept
         %li
-          %a{href: "/requests/decline"}
+          %a{href: "/requests/decline?request_id=#{request.id}"}
             Decline
   = request.inspect
 %h2 Visits

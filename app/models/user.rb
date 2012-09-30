@@ -49,6 +49,11 @@ class User < ActiveRecord::Base
   end
 
   def outstanding_requests
-    Request.where(assigned_vet_id: 4)
+    Request.where(assigned_vet_id: id)
   end
+
+  def self.providers
+    User.all.select { |user| %w(vet technician).include?(user.role) }
+  end
+
 end

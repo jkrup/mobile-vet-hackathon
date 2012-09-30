@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930031108) do
+ActiveRecord::Schema.define(:version => 20120930055549) do
 
   create_table "billing_items", :force => true do |t|
     t.integer  "visit_id"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20120930031108) do
 
   create_table "visits", :force => true do |t|
     t.boolean  "is_home"
-    t.integer  "appointment_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "client_id"

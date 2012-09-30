@@ -19,6 +19,13 @@ class Request < ActiveRecord::Base
   belongs_to :user
   attr_accessible :assigned_vet_id, :nos_serialized, :requested_slots_serialized, :round_count, :user_id, :visit_type
 
+  def nos
+    JSON.parse(self.nos_serialized)
+  end
+  # input array ---> serialized text
+  def nos= ( the_nos )
+    self.nos_serialized = the_nos.to_json
+  end
   def get_start_time
     JSON.parse(self.requested_slots_serialized)["day_starts"][0] #TODO: first day
   end

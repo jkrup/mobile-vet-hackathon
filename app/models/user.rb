@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     []
   end
 
-  def upcoming_appointments
+  def upcoming_visits
     return (visits_to_client || []) if is_provider?
     []
   end

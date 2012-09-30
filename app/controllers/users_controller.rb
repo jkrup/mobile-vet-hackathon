@@ -7,8 +7,9 @@ class UsersController < ApplicationController
       @confirmed_appointments = @client.confirmed_appointments
     elsif current_user.is_provider?
       @provider = current_user
-      @appointments = @provider.upcoming_appointments
+
       @requests = @provider.appointment_requests
+      @appointments = @provider.upcoming_visits
     end
   end
 end

@@ -8,8 +8,10 @@ jQuery ->
     addToMap(a)
      
    $(document).delegate ".decline_link", "click", (e) ->
+    a = $(@).data("address")
     #console.log("killlll")
     removeLastFromMap() 
+    window.on_map.pop()
     #initialize_google_maps()
 
 updateDashboard = () ->

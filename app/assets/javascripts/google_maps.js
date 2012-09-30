@@ -98,4 +98,7 @@ function addToMapLater(address) {
 function removeLastFromMap() {
   window.markers.pop().setMap(null);
   refitMap();
+  if(window.markers.length <= 0) {
+    $("#map_canvas").addClass("hide");
+  }
 }

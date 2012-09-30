@@ -16,6 +16,5 @@
         = current_user.id
         =link_to "sign out", destroy_user_session_path, method: :delete
       %p
-        %a{href: "/requests/show"} "make request"
         %a{href: "/"} "home"
     = yield

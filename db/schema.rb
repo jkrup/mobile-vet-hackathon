@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120930015510) do
 
-  create_table "appointments", :force => true do |t|
-    t.text     "requested_slots_serialized"
-    t.integer  "user_id"
-    t.integer  "assigned_vet_id"
-    t.integer  "round_count"
-    t.string   "visit_type"
-    t.text     "nos_serialized"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
   create_table "billing_items", :force => true do |t|
     t.integer  "visit_id"
     t.integer  "item_id"
@@ -52,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20120930015510) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "requests", :force => true do |t|
+    t.text     "requested_slots_serialized"
+    t.integer  "user_id"
+    t.integer  "assigned_vet_id"
+    t.integer  "round_count"
+    t.string   "visit_type"
+    t.text     "nos_serialized"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                   :default => "", :null => false
     t.string   "encrypted_password",      :default => "", :null => false
@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(:version => 20120930015510) do
     t.datetime "updated_at",                              :null => false
     t.string   "role"
     t.text     "availability_serialized"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "address"
     t.string   "stripe_token"
   end
 

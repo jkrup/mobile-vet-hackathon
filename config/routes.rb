@@ -1,11 +1,12 @@
 MobileVet::Application.routes.draw do
-  devise_for :users
+  get "users/show"
 
-  root to: "users#index"
+  devise_for :users
 
   resources :visits, :billing_items, :pets, :payments
 
-  match "appointments/show", to: 'appointments#show'
-  match "appointments/schedule", to: 'appointments#schedule'
-  
+  root to: "users#show"
+  match "requests/show", to: 'requests#show'
+  match "requests/schedule", to: 'requests#schedule'
+
 end

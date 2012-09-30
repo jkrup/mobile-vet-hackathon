@@ -15,7 +15,7 @@
 -elsif current_user.is_provider?
 
   - if @requests.blank?
-    $('#appt-requests').html("There are no requests at this time.")
+    $('#appt-requests').html("")
   - else
     $('#appt-requests').html("#{ escape_javascript(render @requests) }")
 

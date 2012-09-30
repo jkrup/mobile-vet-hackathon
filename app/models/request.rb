@@ -1,4 +1,3 @@
-<<<<<<< HEAD:app/models/appointment.rb
 # == Schema Information
 #
 # Table name: appointments

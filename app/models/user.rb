@@ -47,5 +47,4 @@ class User < ActiveRecord::Base
   def is_technician?
     role == "technician"
   end
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929223637) do
+ActiveRecord::Schema.define(:version => 20120930013120) do
 
   create_table "billing_items", :force => true do |t|
     t.integer  "visit_id"
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(:version => 20120929223637) do
     t.datetime "updated_at",                              :null => false
     t.string   "role"
     t.text     "availability_serialized"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

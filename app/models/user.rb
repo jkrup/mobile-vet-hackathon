@@ -31,4 +31,15 @@ class User < ActiveRecord::Base
   has_many :provider_visits, class_name: 'Visit', foreign_key: :provider_id
   has_many :requests
 
+  def is_vet?
+    role == "vet"
+  end
+
+  def is_client?
+    role == "client"
+  end
+
+  def is_technician?
+    role == "technician"
+  end
 end

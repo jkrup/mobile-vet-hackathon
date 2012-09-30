@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20120930055549) do
     t.integer  "client_id"
     t.integer  "provider_id"
     t.string   "workflow_state"
-    t.time     "start_time"
+    t.datetime "start_time"
     t.string   "visit_type"
   end
 

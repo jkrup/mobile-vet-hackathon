@@ -1,0 +1,13 @@
+%ul
+  %li
+    = link_to("Begin visit", visit)
+  %li
+    Client:
+    %strong
+      = visit.client.first_name
+      = visit.client.last_name
+  %li
+    Address:
+    %strong
+      = visit.client.address
+= visit.inspect

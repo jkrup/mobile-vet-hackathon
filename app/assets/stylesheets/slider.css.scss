@@ -1,9 +1,86 @@
-#container {width:640px; height:960px; background-image: url('AddANewPet.png');margin:0; padding:0;}
-#schedule {margin-left:105px; padding-top:150px;}
-.slider { background-color:#06F; position:absolute;top:0px;left:0px; z-index:10000; cursor:pointer;}
-.box {width:50px; height:5px;}
-.daycontainer {width:50px; float:left;margin-left:10px;}
-.day {position:relative; background-color:#FFF; height:520px; width:50px; padding:0; margin:0;float:left;}
-.dayText {position:relative; background-color:#FFF; height:20px; width:50px; padding:0; margin:0;border-bottom: 1px solid black;}
-.hour { border-bottom: 1px solid black; height:14px; position:relative; font-size:12px;padding-top:5px;}
-.selected { background-color:#6F6;}
+/* line 1, ../../app/assets/stylesheets/slider.css.scss */
+#container {
+  width: 640px;
+  height: 960px;
+  background-image: url("AddANewPet.png");
+  margin: 0;
+  padding: 0;
+}
+
+/* line 2, ../../app/assets/stylesheets/slider.css.scss */
+#schedule {
+}
+
+/* line 3, ../../app/assets/stylesheets/slider.css.scss */
+.slider {
+  background-color: #06F;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10000;
+  cursor: pointer;
+  -webkit-box-shadow:0px 0px 10px #000;
+}
+
+/* line 4, ../../app/assets/stylesheets/slider.css.scss */
+.box {
+  width: 80px;
+  height: 5px;
+}
+
+/* line 5, ../../app/assets/stylesheets/slider.css.scss */
+.daycontainer {
+  width: 80px;
+  float: left;
+  margin-left: 8px;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* line 6, ../../app/assets/stylesheets/slider.css.scss */
+.day {
+  position: relative;
+  background-color: #FFF;
+  height: 520px;
+  width: 80px;
+  padding: 0;
+  margin: 0;
+  float: left;
+  border-bottom-right-radius:10px;
+  border-bottom-left-radius:10px;
+}
+
+/* line 7, ../../app/assets/stylesheets/slider.css.scss */
+.dayText {
+  position: relative;
+  background-color: #FFF;
+  height: 20px;
+  width: 80px;
+  padding: 5px 0px;
+  margin: 0;
+  border-bottom: 1px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size:1.4em;
+}
+
+/* line 8, ../../app/assets/stylesheets/slider.css.scss */
+.hour {
+  border-bottom: 1px solid black;
+  height: 14px;
+  position: relative;
+  font-size: 16px;
+  line-height:16px;
+  padding-top: 5px;
+  font-weight:bolder;
+}
+
+/* line 9, ../../app/assets/stylesheets/slider.css.scss */
+.selected {
+  background-color: #6699cc;
+  padding-top:3px;
+  padding-bottom:2px;
+  color: #eee;
+  text-shadow:0px -1px 1px #333;
+}
+

@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
     # goes through vets to find vet who can take this request
     vet =
       User.providers.find do |vet|
-        if find_start_time(vet, request_start, request_end, hours_for_visit(params["type"]))
+        if find_start_time(vet, request_start, request_end)
           vet
         end
       end
@@ -66,7 +66,7 @@ class RequestsController < ApplicationController
 
   private
   # This either returns a start_hour in 24hr format or nil (if the vet cannot take the request)
-  def find_start_time(vet, request_start, request_end, hours_long) # vet, request_start, request_end ---> start_hr OR nil
+  def find_start_time(vet, request_start, request_end) # vet, request_start, request_end ---> start_hr OR nil
     #check if vet is blacklisted
     
     # convert to bitmask string with 48 bits, where a 1 indicates availability
@@ -84,25 +84,7 @@ class RequestsController < ApplicationController
     (availability_start * 2).upto((availability_end - 0.5) * 2) { |i| vet_availability[i] = "1" }
     vet_availability = vet_availability.to_i(2)
 
-    # slot length in bits, represented as string of binary ones (each bit
-    # represents 30 mins in bitmask)
-    visit_length_bit_string = "1" * (2 * hours_long)
-
-    # return start hour by finding starting index of a run of 1's in the
-    # bitmask which is as long as visit_length_bit_string
-    index = ("%48s" % (client_request & vet_availability).to_s(2)).index(visit_length_bit_string)
-    if index.nil?
-      # no vets found :(
-      nil
-    else
-      # the starting time! (divide by 2 because of 30 minute granularity)
-      index / 2.0
-    end
+    #start hour
+    ("%48s" % (client_request & vet_availability).to_s(2)).index("111") / 2.0 # TODO: 1.5hr request
   end
-
-  # takes a, b, or c and returns length in hours
-  def hours_for_visit(type)
-    {"a" => 1, "b" => 1.5, "c" => 2}[type]
-  end
-
 end

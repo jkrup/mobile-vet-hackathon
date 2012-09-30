@@ -63,6 +63,8 @@ class RequestsController < ApplicationController
     if vet.present?
       req.assigned_vet_id= vet.id
       req.save
+    else
+      req.destroy
     end
 
     redirect_to :root

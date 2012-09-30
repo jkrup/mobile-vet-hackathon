@@ -56,6 +56,6 @@ class User < ActiveRecord::Base
   end
 
   def outstanding_requests
-    raise "Outstanding Requests go here"
+    requests
   end
 end

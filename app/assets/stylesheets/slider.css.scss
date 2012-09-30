@@ -1,0 +1,9 @@
+#container {width:640px; height:960px; background-image: url('AddANewPet.png');margin:0; padding:0;}
+#schedule {margin-left:105px; padding-top:150px;}
+.slider { background-color:#06F; position:absolute;top:0px;left:0px; z-index:10000; cursor:pointer;}
+.box {width:50px; height:5px;}
+.daycontainer {width:50px; float:left;margin-left:10px;}
+.day {position:relative; background-color:#FFF; height:520px; width:50px; padding:0; margin:0;float:left;}
+.dayText {position:relative; background-color:#FFF; height:20px; width:50px; padding:0; margin:0;border-bottom: 1px solid black;}
+.hour { border-bottom: 1px solid black; height:14px; position:relative; font-size:12px;padding-top:5px;}
+.selected { background-color:#6F6;}

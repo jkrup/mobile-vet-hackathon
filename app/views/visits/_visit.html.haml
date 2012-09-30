@@ -1,17 +1,21 @@
 -if current_user.is_client?
-  Dr #{visit.provider.last_name} will be visiting you soon!!
+  %h4 Appointment Scheduled!
+  %h2.vet You're All Set!
+  %h2
+    Dr. #{visit.provider.last_name} will be visiting you and #{ current_user.pets.first.name } soon!!
+  %img.apt-success-img{:src => "/assets/dog-success.png"}/
+  / todo: DYNAMICALLY LOAD IMAGE BASED ON {{PerSpecies}} above
 
-- else
-  %ul
-    %li
-      = link_to("Begin visit", visit)
-    %li
-      Client:
-      %strong
-        = visit.client.first_name
-        = visit.client.last_name
-    %li
-      Address:
-      %strong
-        = visit.client.address
-  = visit.inspect
+  .control-group
+    .controls.align-center.margintop
+      %button.btn.btn-large.btn-primary{:type => "submit"} Appointment Status
+
+- else ## THIS IS THE VET
+  %h3
+    %p
+      #{visit.client.first_name} #{visit.client.last_name}
+    %p
+      #{visit.client.pets.first.name}
+    %small #{visit.client.address}
+
+  = link_to "Begin Appointment", visit, class: 'btn btn-info'

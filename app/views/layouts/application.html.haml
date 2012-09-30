@@ -29,6 +29,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
+    = javascript_include_tag "application"
     / Le styles
     = stylesheet_link_tag    "application", :media => "all"
     :css
@@ -96,16 +97,16 @@
       Le javascript
       \==================================================
     / Placed at the end of the document so the pages load faster
-    %script{:src => "../assets/js/jquery.js"}
-    %script{:src => "../assets/js/bootstrap-transition.js"}
-    %script{:src => "../assets/js/bootstrap-alert.js"}
-    %script{:src => "../assets/js/bootstrap-modal.js"}
-    %script{:src => "../assets/js/bootstrap-dropdown.js"}
-    %script{:src => "../assets/js/bootstrap-scrollspy.js"}
-    %script{:src => "../assets/js/bootstrap-tab.js"}
-    %script{:src => "../assets/js/bootstrap-tooltip.js"}
-    %script{:src => "../assets/js/bootstrap-popover.js"}
-    %script{:src => "../assets/js/bootstrap-button.js"}
-    %script{:src => "../assets/js/bootstrap-collapse.js"}
-    %script{:src => "../assets/js/bootstrap-carousel.js"}
-    %script{:src => "../assets/js/bootstrap-typeahead.js"}
+    %script{:src => "/assets/jquery.js"}
+    %script{:src => "/assets/bootstrap-transition.js"}
+    %script{:src => "/assets/bootstrap-alert.js"}
+    %script{:src => "/assets/bootstrap-modal.js"}
+    %script{:src => "/assets/bootstrap-dropdown.js"}
+    %script{:src => "/assets/bootstrap-scrollspy.js"}
+    %script{:src => "/assets/bootstrap-tab.js"}
+    %script{:src => "/assets/bootstrap-tooltip.js"}
+    %script{:src => "/assets/bootstrap-popover.js"}
+    %script{:src => "/assets/bootstrap-button.js"}
+    %script{:src => "/assets/bootstrap-collapse.js"}
+    %script{:src => "/assets/bootstrap-carousel.js"}
+    %script{:src => "/assets/bootstrap-typeahead.js"}

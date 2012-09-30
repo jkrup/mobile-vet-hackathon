@@ -1,20 +1,11 @@
 -if current_user.is_client?
-  %h3 A vet will be with you shortly
+  %h2 A vet will be with you shortly
 
 -else
-  %ul
-    %li
-      Client:
-      %strong
-        = request.client.first_name
-        = request.client.last_name
-    %li
-      Address:
-      %strong
-        = request.client.address
-    %li
-      Accept or decline:
-      %ul
-        %li=link_to "Accept", requests_accept_path(request_id: request.id), remote: :true
-        %li=link_to "Decline", requests_decline_path(request_id: request.id), remote: :true
-  = request.inspect
+  %h2 New Appointment Request
+  %h3
+    #{request.client.first_name} #{request.client.last_name}
+    %small #{request.client.address}
+
+  =link_to "Accept", requests_accept_path(request_id: request.id), remote: :true, class: 'btn btn-success'
+  =link_to "Decline", requests_decline_path(request_id: request.id), remote: :true, class: 'btn btn-danger'

@@ -2,6 +2,7 @@
 
 #add-appt
   -if @nothing_is_going_on
+    %h1 Request an Appointment
     =render 'requests/make_appointment'
 
 #appt-requests
@@ -9,4 +10,3 @@
 
 #confirmed-visits
   =render @visits
-

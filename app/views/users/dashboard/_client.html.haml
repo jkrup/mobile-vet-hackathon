@@ -1,7 +1,12 @@
--if @nothing_is_going_on
-  = link_to "Schedule appointment", new_request_path, class: 'btn btn-success'
+#client{:data => {:id => current_user.id}}
 
-=render @appointment_requests
+#add-appt
+  -if @nothing_is_going_on
+    =render 'requests/make_appointment'
 
-=render @confirmed_visits
+#appt-requests
+  =render @requests
+
+#confirmed-visits
+  =render @visits
 

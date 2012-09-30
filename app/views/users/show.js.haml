@@ -1,0 +1,13 @@
+-if current_user.is_client?
+  - if @requests.blank? && @visits.blank?
+    $('#add-appt').html("#{ escape_javascript(render 'requests/make_appointment') }")
+
+  - if @requests.blank?
+    $('#appt-requests').html("")
+  - else
+    $('#appt-requests').html("#{ escape_javascript(render @requests) }")
+
+  - if @vists.blank?
+    $('#confirmed-visits').html("")
+  - else
+    $('#confirmed-visits').html("#{ escape_javascript(render @vists) }")

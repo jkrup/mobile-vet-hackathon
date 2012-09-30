@@ -1,20 +1,24 @@
-%ul
-  %li
-    Client:
-    %strong
-      = request.client.first_name
-      = request.client.last_name
-  %li
-    Address:
-    %strong
-      = request.client.address
-  %li
-    Accept or decline:
-    %ul
-      %li
-        %a{href: "/requests/accept?request_id=#{request.id}"}
-          Accept
-      %li
-        %a{href: "/requests/decline"}
-          Decline
-= request.inspect
+-if current_user.is_client?
+  %h3 A vet will be with you shortly
+
+-else
+  %ul
+    %li
+      Client:
+      %strong
+        = request.client.first_name
+        = request.client.last_name
+    %li
+      Address:
+      %strong
+        = request.client.address
+    %li
+      Accept or decline:
+      %ul
+        %li
+          %a{href: "/requests/accept?request_id=#{request.id}"}
+            Accept
+        %li
+          %a{href: "/requests/decline"}
+            Decline
+  = request.inspect

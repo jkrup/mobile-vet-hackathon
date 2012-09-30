@@ -16,7 +16,7 @@
 class Request < ActiveRecord::Base
 
   has_one :assigned_vet, :class_name => "User"
-  belongs_to :user
+  belongs_to :client, class_name: 'User', foreign_key: :user_id
   attr_accessible :assigned_vet_id, :nos_serialized, :requested_slots_serialized, :round_count, :user_id, :visit_type
 
   def get_start_time

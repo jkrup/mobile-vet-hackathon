@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   def show
     if current_user.is_client?
       @client = current_user
-      @visits = @client.requests_for_vet
+
+      @appointment_requests = @client.requests_for_vet
+      @confirmed_appointments = @client.confirmed_appointments
     elsif current_user.is_provider?
       @provider = current_user
       @appointments = @provider.upcoming_appointments

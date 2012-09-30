@@ -55,7 +55,28 @@ class User < ActiveRecord::Base
     end
   end
 
-  def outstanding_requests
-    requests
+  def is_provider?
+    self.is_vet? || self.is_technician?
+  end
+
+  # =================
+  # Client methods
+  # =================
+  def requests_for_vet
+    return (client_visits || []) if is_client?
+    []
+  end
+
+  # =================
+  # vet/technician methods
+  # =================
+  def appointment_requests
+    return (requests || []) if is_provider?
+    []
+  end
+
+  def upcoming_appointments
+    return (provider_visits || []) if is_provider?
+    []
   end
 end

@@ -15,8 +15,17 @@
 #  last_sign_in_ip         :string(255)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
-#  role                    :string(255)
+#  role                    :string(255)      default("client")
 #  availability_serialized :text
+#  first_name              :string(255)
+#  last_name               :string(255)
+#  address                 :text
+#  stripe_token            :string(255)
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 class User < ActiveRecord::Base

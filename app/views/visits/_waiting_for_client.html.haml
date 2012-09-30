@@ -1,4 +1,7 @@
+%h2 Is the client available?
 = form_for visit do |f|
   = hidden_field_tag :next_step, :checkin
   = f.submit "Yes"
-
+= form_for visit do |f|
+  = hidden_field_tag :next_step, :bill_client_no_show
+  = f.submit "No"

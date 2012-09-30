@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930001341) do
+ActiveRecord::Schema.define(:version => 20120930015510) do
 
   create_table "appointments", :force => true do |t|
     t.text     "requested_slots_serialized"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20120930001341) do
     t.datetime "updated_at",                              :null => false
     t.string   "role"
     t.text     "availability_serialized"
+    t.string   "stripe_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

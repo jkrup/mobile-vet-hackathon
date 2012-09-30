@@ -2,16 +2,8 @@
   Dr #{visit.provider.last_name} will be visiting you soon!!
 
 - else
-  %ul
-    %li
-      = link_to("Begin visit", visit)
-    %li
-      Client:
-      %strong
-        = visit.client.first_name
-        = visit.client.last_name
-    %li
-      Address:
-      %strong
-        = visit.client.address
-  = visit.inspect
+  %h3
+    #{visit.client.first_name} #{visit.client.last_name}
+    %small #{visit.client.address}
+
+  = link_to "Begin Appointment", visit, class: 'btn btn-info'

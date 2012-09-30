@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def confirmed_visits
-    return (visits_from_provider || []) if is_client?
+    return (visits_from_provider.hasnt_happened_yet || []) if is_client?
     []
   end
 
@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
 
 
   def upcoming_visits
-    return (visits_to_client || []) if is_provider?
+    return (visits_to_client.hasnt_happened_yet || []) if is_provider?
     []
   end
 

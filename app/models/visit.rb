@@ -20,28 +20,30 @@ class Visit < ActiveRecord::Base
   belongs_to :provider, class_name: 'User', foreign_key: :provider_id # the vet
   has_many :billing_items
 
-  def provider_type
-    provider.role
-  end
+
   workflow do
     state :waiting_for_client do
-      event :checkin, :transitions_to => :assessment
-      event :bill_client_no_show, :transitions_to => :complete
+      event :checkin, transitions_to: :performing_procedure
     end
-    
-    state :assessment do 
-      event :finish_assessment, :transitions_to => :performing_procedure
-    end
-    
-    state :performing_procedure do 
-      event :finish_procedure, :transitions_to => :checkout
+
+    state :performing_procedure do
+      event :finish_procedure, transitions_to: :checkout
     end
 
     state :checkout do
-      event :finish_checkout, :transitions_to => :complete
+      event :finish_checkout, transitions_to: :complete
     end
-    
+
     state :complete
+  end
+
+  def self.hasnt_happened_yet
+    where "workflow_state = 'waiting_for_client'"
+    # waiting_for_client?
+  end
+
+  def provider_type
+    provider.role
   end
 
   def do_finish_assessment visit_attr
@@ -57,7 +59,7 @@ class Visit < ActiveRecord::Base
     checkin!
     save!
   end
-  
+
   def do_finish_checkout visit_attr
     # TODO charge credit card
     #

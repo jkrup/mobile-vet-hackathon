@@ -1,5 +1,5 @@
 -if current_user.is_client?
-  - if @requests.blank? && @visits.blank?
+  - if @nothing_is_going_on
     $('#add-appt').html("#{ escape_javascript(render 'requests/make_appointment') }")
 
   - if @requests.blank?
@@ -16,9 +16,10 @@
 
   - if @requests.blank?
     $('#appt-requests').html("There are no requests at this time.")
-  - else 
+  - else
     $('#appt-requests').html("#{ escape_javascript(render @requests) }")
-  - if @vists.blank?
+
+  - if @visits.blank?
     $('#confirmed-visits').html("You have no scheduled visits.")
   - else
-    $('#confirmed-visits').html("#{ escape_javascript(render @vists) }")
+    $('#confirmed-visits').html("#{ escape_javascript(render @visits) }")

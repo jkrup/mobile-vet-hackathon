@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       @requests = @client.requests_for_vet
       @visits = @client.confirmed_visits
 
-      @nothing_is_going_on = @requests.blank? && @appointments.blank?
+      @nothing_is_going_on = @requests.blank? && @visits.blank?
     elsif current_user.is_provider?
       @provider = current_user
 

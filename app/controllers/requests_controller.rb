@@ -40,6 +40,8 @@ class RequestsController < ApplicationController
     @type = req.visit_type
     visit = Visit.create( start_time: @start_hour, visit_type: @type, provider_id: current_user.id, client_id: req.client.id)
     req.destroy
+
+    redirect_to :root
   end
 
   def decline
@@ -48,7 +50,7 @@ class RequestsController < ApplicationController
     req.save
     req.nos+=[current_user.id]
     # goes through vets to find vet who can take this request
-    vet =
+    vet = 
       User.providers.find do |vet|
         # check if vet is on blacklist
         if !req.nos.include?(vet.id)
@@ -57,9 +59,13 @@ class RequestsController < ApplicationController
           end
         end
       end
-    raise "no one wants this guy though" if vet.nil? # TODO: move over to next day!
-    req.assigned_vet_id= vet.id
-    req.save
+
+    if vet.present?
+      req.assigned_vet_id= vet.id
+      req.save
+    end
+
+    redirect_to :root
   end
 
   private

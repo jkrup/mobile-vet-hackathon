@@ -36,16 +36,14 @@ class User < ActiveRecord::Base
 
   has_many :requests
 
-  def is_vet?
-    role == "vet"
-  end
+  ROLES = %W[vet client technician]
+  validates_presence_of  :role
+  validates_inclusion_of :role, in: ROLES
 
-  def is_client?
-    role == "client"
-  end
-
-  def is_technician?
-    role == "technician"
+  ROLES.each do |role_name|
+    define_method "is_#{role_name}?" do
+      self.role == role_name
+    end
   end
 
   def outstanding_requests

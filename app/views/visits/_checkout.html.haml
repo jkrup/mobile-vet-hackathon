@@ -8,5 +8,4 @@ Total for this visit:
 = number_to_currency @visit.visit_total
 = form_for @visit do |f|
   = hidden_field_tag :next_step, :finish_checkout
-  = f.submit_tag "Confirm total charges."
-
+  = f.submit "Confirm total charges."

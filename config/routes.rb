@@ -4,11 +4,11 @@ MobileVet::Application.routes.draw do
 
   devise_for :users
 
+  resources :visits, :billing_items, :pets, :payments
+
   root to: "users#show"
 
   get "requests/show"
   post "requests/schedule"
 
-  resources :visits
-  resources :billing_items
 end

@@ -1,0 +1,11 @@
+=form_for @pet do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.label :specie
+  =f.text_field :specie
+  =f.label :age
+  =f.text_field :age
+  =f.label :medical_history
+  =f.text_area :medical_history
+  =f.submit "add pet" 
+  

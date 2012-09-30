@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20120930031108) do
     t.datetime "updated_at",                                :null => false
   end
 
+  create_table "pets", :force => true do |t|
+    t.string   "name"
+    t.string   "specie"
+    t.integer  "age"
+    t.text     "medical_history"
+    t.integer  "client_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "requests", :force => true do |t|
     t.text     "requested_slots_serialized"
     t.integer  "user_id"
@@ -60,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120930031108) do
     t.string   "first_name"
     t.string   "last_name"
     t.text     "address"
+    t.string   "stripe_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

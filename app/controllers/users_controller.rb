@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @provider = current_user
 
       @requests = @provider.appointment_requests
-      @appointments = @provider.upcoming_visits
+      @visits = @provider.upcoming_visits
     end
   end
 end

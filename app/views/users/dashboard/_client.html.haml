@@ -1,9 +1,8 @@
-%h2 Today's appointments
-Appointments go here
 
-=link_to "Request a Vet", requests_show_path
+-if @appointment_requests.blank?
+  = link_to "Schedule appointment", new_request_path
 
-%ul
-  =render @visits, as: :appointment_request
+=render partial: 'appointment_requests/appointment_request', collection: @appointment_requests
 
-= link_to "Schedule appointment", requests_show_path
+=render @confirmed_appointments
+

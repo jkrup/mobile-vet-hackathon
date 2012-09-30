@@ -1,6 +1,5 @@
 MobileVet::Application.routes.draw do
   get "users/show"
-  get "requests/accept"
 
   devise_for :users
 
@@ -8,14 +7,13 @@ MobileVet::Application.routes.draw do
 
   root to: "users#show"
 
-  get "requests/show"
-  post "requests/schedule"
+  resources :requests
+  get "requests/accept"
 
 end
 #== Route Map
-# Generated on 30 Sep 2012 01:52
+# Generated on 30 Sep 2012 02:21
 #
-#          requests_accept GET    /requests/accept(.:format)        requests#accept
 #         new_user_session GET    /users/sign_in(.:format)          devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)          devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)         devise/sessions#destroy
@@ -58,5 +56,11 @@ end
 #                          PUT    /payments/:id(.:format)           payments#update
 #                          DELETE /payments/:id(.:format)           payments#destroy
 #                     root        /                                 users#show
-#            requests_show GET    /requests/show(.:format)          requests#show
-#        requests_schedule POST   /requests/schedule(.:format)      requests#schedule
+#                 requests GET    /requests(.:format)               requests#index
+#                          POST   /requests(.:format)               requests#create
+#              new_request GET    /requests/new(.:format)           requests#new
+#             edit_request GET    /requests/:id/edit(.:format)      requests#edit
+#                  request GET    /requests/:id(.:format)           requests#show
+#                          PUT    /requests/:id(.:format)           requests#update
+#                          DELETE /requests/:id(.:format)           requests#destroy
+#          requests_accept GET    /requests/accept(.:format)        requests#accept

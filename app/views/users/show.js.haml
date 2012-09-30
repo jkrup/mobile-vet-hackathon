@@ -7,7 +7,18 @@
   - else
     $('#appt-requests').html("#{ escape_javascript(render @requests) }")
 
-  - if @vists.blank?
+  - if @visits.blank?
     $('#confirmed-visits').html("")
+  - else
+    $('#confirmed-visits').html("#{ escape_javascript(render @visits) }")
+
+-elsif current_user.is_provider?
+
+  - if @requests.blank?
+    $('#appt-requests').html("There are no requests at this time.")
+  - else 
+    $('#appt-requests').html("#{ escape_javascript(render @requests) }")
+  - if @vists.blank?
+    $('#confirmed-visits').html("You have no scheduled visits.")
   - else
     $('#confirmed-visits').html("#{ escape_javascript(render @vists) }")

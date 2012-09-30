@@ -1,9 +1,9 @@
 -days = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
--initDay = "SAT"
+-initDay = "SUN"
 
 #schedule
   #asda
-    -(0..7).each do |j|
+    -(0..3).each do |j|
       - dayIndex = (days.index(initDay)+j)%7;
       .daycontainer
         .dayText=days[dayIndex]

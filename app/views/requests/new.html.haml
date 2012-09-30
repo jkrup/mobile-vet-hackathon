@@ -98,14 +98,13 @@
   	});
   });
 
-= render "request_slider"
+%section
+  = render "request_slider"
+
 %br
 %br
 
-%form{action: "schedule", method: "post"}
-  - 7.times do |day|
-    %input{type: "hidden", name: "day_starts[]", :value => "9"}
-    %input{type: "hidden", name: "day_ends[]", :value => "17"}
-  %textarea{name: "type"}
-    cat
-  %input{type: "submit"}
+%section
+
+  =form_for @request do |f|
+    =f.submit 'Complete Request'

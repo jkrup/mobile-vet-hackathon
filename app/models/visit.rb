@@ -22,10 +22,6 @@ class Visit < ActiveRecord::Base
 
 
   workflow do
-    state :waiting_for_client do
-      event :checkin, transitions_to: :performing_procedure
-    end
-
     state :performing_procedure do
       event :finish_procedure, transitions_to: :checkout
     end
@@ -38,7 +34,7 @@ class Visit < ActiveRecord::Base
   end
 
   def self.hasnt_happened_yet
-    where "workflow_state = 'waiting_for_client'"
+    where "workflow_state = 'performing_procedure'"
     # waiting_for_client?
   end
 

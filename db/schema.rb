@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929203039) do
+ActiveRecord::Schema.define(:version => 20120930001341) do
 
   create_table "appointments", :force => true do |t|
     t.text     "requested_slots_serialized"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20120929203039) do
     t.string   "role"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "pets", :force => true do |t|
+    t.string   "name"
+    t.string   "specie"
+    t.integer  "age"
+    t.text     "medical_history"
+    t.integer  "client_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

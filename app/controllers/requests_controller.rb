@@ -10,8 +10,8 @@ class RequestsController < ApplicationController
   # This Schedules / Creates a request
   def create
     # get start and end window of first day
-    day_starts = params["day_starts"].collect { |string_num| string_num.to_f }
-    day_ends = params["day_ends"].collect { |string_num| string_num.to_f }
+    day_starts = [9,9,9,9,9,9,9] # params["request"][:day_starts].collect { |string_num| string_num.to_f }
+    day_ends = [17,17,17,17,17,17,17] #params["request"][:day_ends].collect { |string_num| string_num.to_f }
 
     request_start = day_starts[0].to_f
     request_end = day_ends[0].to_f

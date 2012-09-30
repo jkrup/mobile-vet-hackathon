@@ -1,12 +1,6 @@
-=params
+=form_for @request do |f|
+  -7.times do |day|
+    =f.hidden_field :day_starts, value: ["9","9","9","9","9","9","9"]
+    =f.hidden_field :"day_ends", value: ["17","17","17","17","17","17","17"]
 
-=form_for @request do
-  - 7.times do |day|
-    %p
-      day
-      = day
-      %input{name: "day_starts[]", :value => "9"}
-      %input{name: "day_ends[]", :value => "17"}
-  %textarea{name: "type"}
-    b
-  %input{type: "submit"}
+  =f.submit 'Complete Request'

@@ -1,0 +1,24 @@
+%p VET
+%h2 Requests
+- current_user.requests.each do |request|
+  %ul
+    %li
+      Client:
+      %strong
+        = request.user.first_name
+        = request.user.last_name
+    %li
+      Address:
+      %strong
+        = request.user.address
+    %li
+      Accept or decline:
+      %ul
+        %li
+          %a{href: "/requests/accept"}
+            Accept
+        %li
+          %a{href: "/requests/decline"}
+            Decline
+  = request.inspect
+

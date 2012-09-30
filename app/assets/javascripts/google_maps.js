@@ -70,6 +70,9 @@ function refitMap() {
 }
 
 function addToMap(address) {
+    $("#map_canvas").removeClass("hide");
+    google.maps.event.trigger(window.map, 'resize');
+
     new google.maps.Geocoder().geocode( {'address': address}, function(res, code) {
         marker = new google.maps.Marker({
           position: res[0]['geometry']['location'],
@@ -80,9 +83,13 @@ function addToMap(address) {
 
         refitMap();
       });
+
 }
 
 function addToMapLater(address) {
+    $("#map_canvas").removeClass("hide");
+    google.maps.event.trigger(window.map, 'resize');
+
     new google.maps.Geocoder().geocode( {'address': address}, function(res, code) {
         marker = new google.maps.Marker({
           position: res[0]['geometry']['location'],
@@ -93,6 +100,7 @@ function addToMapLater(address) {
 
         refitMap();
       });
+
 }
 
 function removeLastFromMap() {

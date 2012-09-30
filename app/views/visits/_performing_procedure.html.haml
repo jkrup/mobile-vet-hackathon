@@ -1,17 +1,9 @@
-%ul
-  - @items.each do |item|
-    = form_for BillingItem.new, :remote => true do |f|
-      %li
-        = f.hidden_field :item_id, value: item.id
-        = f.hidden_field :visit_id, value: visit.id
-        = f.submit item.name
+#procedures_list
+  = render @items, visit: visit
 
 #billing_item_list
-  - @billing_items.each do |billing_item|
-    %br
-    = billing_item.item.name
-
+  = render @billing_items
 
 = form_for visit do |f|
   = hidden_field_tag :next_step, :finish_procedure
-  = f.submit "Done with animal"
+  = f.submit "Finish Treatments"

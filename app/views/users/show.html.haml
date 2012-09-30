@@ -1,14 +1,10 @@
-%h1 Request an Appointment
 .makeappointment
+  %h1 Request an Appointment
   .control-group
     .controls.align-center.margintop
-      %button#huge-cta.btn.btn-large.btn-primary{:type => "submit"}
-        Schedule
-        %br>/
-        Appointment
-%p Find me in app/views/users/show.html.haml
-%p
-  current user is
-  = current_user.inspect
+      = render "/users/dashboard/#{current_user.role}"
+-#%p Find me in app/views/users/show.html.haml
+-#%p
+  -#current user is
+  -#= current_user.inspect
 
-= render "/users/dashboard/#{current_user.role}"

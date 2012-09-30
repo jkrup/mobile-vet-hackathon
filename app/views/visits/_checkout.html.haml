@@ -1,11 +1,17 @@
-MobileVet Billable Items for Visit
-%ul
-  - @billing_items.each do |billing_item|
-    %li
-      = billing_item.item.name
-      = number_to_currency billing_item.item.price
-Total for this visit: 
-= number_to_currency @visit.visit_total
-= form_for @visit do |f|
-  = hidden_field_tag :next_step, :finish_checkout
-  = f.submit "Confirm total charges."
+%h2 MobileVet Receipt
+.well
+  %ul
+    - @billing_items.each do |billing_item|
+      %li{:style => "list-style: none; font-size: 1.5em"}
+        .barsdf{:style => "float: left;"}
+          = "#{billing_item.item.name}:"
+        .foo{:style => "display: block; float: right;"}
+          = number_to_currency billing_item.item.price
+        %br.clearfix
+  %p{:style => "font-size: 1.5em; font-weight: bolder; text-align: right; padding: 20px; border-top: 1px solid #999"}
+    Total:
+    = number_to_currency @visit.visit_total
+  .align-center
+    = form_for @visit do |f|
+      = hidden_field_tag :next_step, :finish_checkout
+      = f.submit "Confirm total charges.", :class => "btn btn-success", :id => "huge-cta"

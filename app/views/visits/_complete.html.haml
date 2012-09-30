@@ -1,5 +1,7 @@
-%h1 Thank you for using Mobile Vet.
-%h3
-  = number_to_currency @visit.visit_total
-  has been charged to your credit card.
-%p= link_to "Return to your Dashboard", root_url
+.signup
+  %h1 Thank you for using Mobile Vet.
+  %h3
+    = number_to_currency @visit.visit_total
+    has been charged to your credit card.
+  .well{:style => "text-align: center;"}
+    %p= link_to "Return to your Dashboard", root_url, :class => "btn btn-info"

@@ -53,6 +53,17 @@ class Visit < ActiveRecord::Base
     checkin!
     save!
   end
+  
+  def do_finish_checkout visit_attr
+    # TODO charge credit card
+    #
+    finish_checkout!
+  end
+
+  def do_bill_client_no_show visit_attr
+    # TODO charge for no show
+    bill_client_no_show!
+  end
   def next_step (visit_attr = {})
     self.send "do_#{visit_attr[:next_step]}", visit_attr
   end

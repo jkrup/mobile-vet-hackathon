@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     []
   end
 
-  def confirmed_appointments
+  def confirmed_visits
     return (visits_from_provider || []) if is_client?
     []
   end

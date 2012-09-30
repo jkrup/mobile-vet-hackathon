@@ -1,8 +1,7 @@
+-if @nothing_is_going_on
+  = link_to "Schedule appointment", new_request_path, class: 'btn btn-success'
 
--if @appointment_requests.blank?
-  = link_to "Schedule appointment", new_request_path
+=render @appointment_requests
 
-=render partial: 'appointment_requests/appointment_request', collection: @appointment_requests
-
-=render @confirmed_appointments
+=render @confirmed_visits
 

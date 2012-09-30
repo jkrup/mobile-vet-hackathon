@@ -1,6 +1,111 @@
-=form_for @request do |f|
-  -7.times do |day|
-    =f.hidden_field :day_starts, value: ["9","9","9","9","9","9","9"]
-    =f.hidden_field :"day_ends", value: ["17","17","17","17","17","17","17"]
+:javascript
+  function updateSchedule(){
+  	var jsonObj = [];
+  	var nday = 0;
+  	$('.day').each(function(index) {
+  		var upLimit = Math.floor(parseInt($(this).children('.up').position().top)/20);
+  		var downLimit = Math.floor(parseInt($(this).children('.down').position().top)/20);
+  		
+  		jsonObj.push({id: nday, start: upLimit, end: downLimit});
+  		nday++;
+   	 });
+  	//AJAX CALL
+  	 $.ajax({
+  		type: "POST",
+  		url: "/index.php",
+  		dataType: "json",	
+  		data: jsonObj
+  	 });
+  }
+  function markSelected(theDay){
+  		var upLimit = Math.floor(parseInt(theDay.children('.up').position().top)/20);
+  		var downLimit = Math.floor(parseInt(theDay.children('.down').position().top)/20);
+  		for(var i=0; i<26; i++){
+  			if(i >= upLimit && i < downLimit){
+  				theDay.children(".time"+i).addClass("selected");
+  				//Only perform this when the mouse mas released
+  				if(i == upLimit){
+  					theDay.children(".time"+i).html(theDay.children(".time"+i).attr('timeval'));
+  				}else if(i == downLimit-1){
+  					theDay.children(".time"+i).html(theDay.children(".time"+i).attr('timeval'));
+  				}else if(i!=0){
+  					theDay.children(".time"+i).html('');
+  				}
+  			}else{
+  				theDay.children(".time"+i).removeClass("selected");
+  				if(i==0 ||  i== 24){
+  					theDay.children(".time"+i).html(theDay.children(".time"+i).attr('timeval'));
+  				}else{
+  					theDay.children(".time"+i).html('');
+  				}
+  			}
+  		}
+  		theDay.children(".time25").css('border-bottom','none');
+  }
+  $(document).ready(function(){
+  $('#submit_schedule').click(function(){
+  	updateSchedule();
+  })
+  	$('.day').each(function(index) {
+  		//init the ranges
+  		var rand = Math.floor((Math.random()*10)+1);
+  		$(this).children('.up').css("top", rand*20+"px");
+  		$(this).children('.down').css("top", (rand+10)*20+"px");	
+      	markSelected($(this))
+  	});
+  	$(window).mouseup(function(e){
+  		$('.draggable').removeClass('draggable');
+  		$('.draggable').parent().unbind('mousemove');
+  		//$("#mousedif").html(Math.floor(parseInt($drag.position().top)/20));
+  		var pos = Math.floor(parseInt($drag.position().top)/20);
+  		$drag.css("top", pos*20+"px");
+  		markSelected($drag.parent());
+  		//updateSchedule();
+  	});
+  	
+  	var $drag = null;
+  	$('.slider').mousedown(function(e1) {
+  		e1.preventDefault();
+  		$drag = $(this).addClass('draggable'); 
+  		//$drag.css('z-index', 1000);
+  		$('.draggable').parent().mousemove(function(e) {
+  			//$("#mousedif").html($drag.parent().offset().top);									
+  			var pos_y = $drag.offset().top;
+  			var drg_h = $drag.outerHeight();
+  			var currY = e.pageY;
+  			var initOff = $drag.parent().offset().top -5;
+  			if($drag.hasClass("up")){
+  				var $limit = $drag.siblings('.down');
+  				if((currY-drg_h - initOff >= 0) && currY-drg_h - initOff < parseInt($limit.position().top)){
+  					$('.draggable').css("top", currY-drg_h - initOff+"px");
+  				}
+  			}else if($drag.hasClass("down")){
+  				var $limit = $drag.siblings('.up');
+  				if((currY-drg_h - initOff > parseInt($limit.position().top) && currY-drg_h - initOff < $drag.parent().height())){
+  					$('.draggable').css("top", currY-drg_h - initOff+"px");
+  				}
+  			}
+  			markSelected($drag.parent())
+  		});
+  	}).parent().mouseup(function(e){
+  		$(this).removeClass('draggable');
+  		$('.draggable').parent().unbind('mousemove');
+  		//$("#mousedif").html(Math.floor(parseInt($drag.position().top)/20));
+  		var pos = Math.floor(parseInt($drag.position().top)/20);
+  		$drag.css("top", pos*20+"px");
+  		markSelected($(this));
+  		//updateSchedule();
+  	});
+  });
 
-  =f.submit 'Complete Request'
+= render "request_slider"
+%br
+%br
+
+%form{action: "schedule", method: "post"}
+  - 7.times do |day|
+    %input{type: "hidden", name: "day_starts[]", :value => "9"}
+    %input{type: "hidden", name: "day_ends[]", :value => "17"}
+  %textarea{name: "type"}
+    cat
+  %input{type: "submit"}

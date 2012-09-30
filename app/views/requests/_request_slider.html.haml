@@ -1,0 +1,22 @@
+-days = ["SUN","MON","TUE","WED","THU","FRI","SAT"]
+-initDay = "SAT"
+
+#schedule
+  #asda
+    -(0..7).each do |j|
+      - dayIndex = (days.index(initDay)+j)%7;
+      .daycontainer
+        .dayText=days[dayIndex]
+        .day{:id => "day#{j}"}
+          .box.slider.up
+          .box.slider.down
+          - hour = 8;
+          - min = ":00";
+          - (0..26).each do |i|
+            .hour{:class => "time#{i}", :timeval => "#{hour}.#{min}"}
+            - if (i+1)%2 == 0
+              -hour +=1;
+              -min = ":00";
+            - else
+              -min = ":30";
+%div{style:"clear:both"}

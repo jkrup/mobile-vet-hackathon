@@ -6,3 +6,28 @@
   width: 95%;
   margin: 10px auto;
 }
+
+.apt-line1 {
+  font-size:1.5em;
+
+}
+
+.apt-line2 {
+  font-weight:bolder;
+  padding: 5px;
+}
+
+.float-right-block {
+  display: inline-block;
+  float: right;
+}
+
+.abs-top-right {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.relative {
+  position: relative;
+}

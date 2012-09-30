@@ -11,14 +11,15 @@
       %button.btn.btn-large.btn-primary{:type => "submit"} Appointment Status
 
 - else ## THIS IS THE VET
-  %h3
-    .well.well-small.apt-list
-      %ul
-        %li
+  .well.well-small.apt-list
+    %ul
+      %li.relative
+        .apt-line1
           %span.vet 12:00pm
           %span #{visit.client.pets.first.name}
+        .apt-line2
           %span #{visit.client.first_name} #{visit.client.last_name}
           %span #{visit.client.address}
-          %span
-            = link_to "Begin Appointment", visit, class: 'btn btn-info'
+        %span.abs-top-right
+          = link_to "Begin", visit, class: 'btn btn-info'
   .visit-address-data.hide{ data: { address: visit.client.address.parameterize } }
